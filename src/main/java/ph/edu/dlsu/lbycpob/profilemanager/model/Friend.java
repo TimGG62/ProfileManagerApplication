@@ -33,3 +33,35 @@ public class Friend {
 
     @Column(name = "friend_id", nullable = false, columnDefinition = "uuid")
     private UUID friendId;
+    public Friend() {
+    }
+
+    public Friend(UUID id, UUID profileId, UUID friendId) {
+        this.id = id;
+        this.profileId = profileId;
+        this.friendId = friendId;
+    }
+
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    public UUID getProfileId() {
+        return profileId;
+    }
+
+    public void setProfileId(UUID profileId) {
+        this.profileId = profileId;
+    }
+
+    public UUID getFriendId() {
+        return friendId;
+    }
+
+    public void setFriendId(UUID friendId) {
+        this.friendId = friendId;
+    }
