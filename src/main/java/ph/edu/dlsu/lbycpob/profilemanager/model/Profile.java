@@ -189,5 +189,16 @@ public class Profile {
             return this;
         }
 
+        public Profile build() {
+            return new Profile(id, name, status, quote, picture, createdAt);
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public UUID getId() {
+            return id;
+        }
     }
 }
