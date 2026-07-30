@@ -120,4 +120,9 @@ public class Profile {
                 && Objects.equals(createdAt, profile.createdAt);
     }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, status, quote, picture, createdAt);
+    }
+
 }
