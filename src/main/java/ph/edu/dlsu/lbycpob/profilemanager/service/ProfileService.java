@@ -67,4 +67,12 @@ public class ProfileService {
         return profileRepository.save(Profile.builder().name(trimmed).build());
     }
 
+    @Transactional
+    public void deleteProfile(UUID id) {
+        if (!profileRepository.existsById(id)) {
+            throw new NoSuchElementException("Profile not found.");
+        }
+        profileRepository.deleteById(id); // ON DELETE CASCADE removes related friends rows
+    }
+
 }
