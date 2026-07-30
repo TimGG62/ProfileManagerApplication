@@ -75,4 +75,32 @@ public class ProfileService {
         profileRepository.deleteById(id); // ON DELETE CASCADE removes related friends rows
     }
 
+    @Transactional
+    public void updateStatus(UUID id, String status) {
+        String trimmed = status == null ? "" : status.trim();
+        if (trimmed.isEmpty()) {
+            throw new IllegalArgumentException("Status field is empty.");
+        }
+        getProfile(id).setStatus(trimmed);
+    }
+
+    @Transactional
+    public void updateQuote(UUID id, String quote) {
+        String trimmed = quote == null ? "" : quote.trim();
+        if (trimmed.isEmpty()) {
+            throw new IllegalArgumentException("Quote field is empty.");
+        }
+        getProfile(id).setQuote(trimmed);
+    }
+
+    /** Mode B: paste a URL directly, same as the original saveUrlDirectly(). */
+    @Transactional
+    public void updatePictureUrl(UUID id, String pictureUrl) {
+        String trimmed = pictureUrl == null ? "" : pictureUrl.trim();
+        if (!trimmed.startsWith("https://")) {
+            throw new IllegalArgumentException("URL must start with https://");
+        }
+        getProfile(id).setPicture(trimmed);
+    }
+
 }
