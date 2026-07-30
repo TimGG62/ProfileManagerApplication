@@ -31,4 +31,9 @@ public class ProfileService {
         return profileRepository.findAllByOrderByNameAsc();
     }
 
+    public Profile getProfile(UUID id) {
+        return profileRepository.findById(id)
+                .orElseThrow(() -> new NoSuchElementException("Profile not found."));
+    }
+
 }
