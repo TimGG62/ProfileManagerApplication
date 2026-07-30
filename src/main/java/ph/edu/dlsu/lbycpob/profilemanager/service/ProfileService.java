@@ -43,4 +43,16 @@ public class ProfileService {
         return friendIds.isEmpty() ? List.of() : profileRepository.findAllById(friendIds);
     }
 
+    public Profile lookupFirstMatch(String query) {
+        String trimmed = query == null ? "" : query.trim();
+        if (trimmed.isEmpty()) {
+            throw new IllegalArgumentException("Name field is empty. Please enter a name to search.");
+        }
+        List<Profile> matches = profileRepository.findByNameContainingIgnoreCaseOrderByNameAsc(trimmed);
+        if (matches.isEmpty()) {
+            throw new NoSuchElementException("No profile found matching \"" + trimmed + "\".");
+        }
+        return matches.getFirst();
+    }
+
 }
