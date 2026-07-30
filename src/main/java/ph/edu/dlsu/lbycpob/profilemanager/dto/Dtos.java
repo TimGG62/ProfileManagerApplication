@@ -1,7 +1,5 @@
 package ph.edu.dlsu.lbycpob.profilemanager.dto;
 
-
-
 import ph.edu.dlsu.lbycpob.profilemanager.model.Profile;
 
 import java.util.List;
