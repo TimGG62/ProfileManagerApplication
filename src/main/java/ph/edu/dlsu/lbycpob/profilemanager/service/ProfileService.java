@@ -27,4 +27,8 @@ public class ProfileService {
         this.supabaseStorageService = supabaseStorageService;
     }
 
+    public List<Profile> listProfiles() {
+        return profileRepository.findAllByOrderByNameAsc();
+    }
+
 }
