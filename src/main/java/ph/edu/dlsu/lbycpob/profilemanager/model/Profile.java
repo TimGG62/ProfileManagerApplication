@@ -159,5 +159,10 @@ public class Profile {
         private Builder() {
         }
 
+        public Builder id(UUID id) {
+            this.id = id;
+            return this;
+        }
+
     }
 }
