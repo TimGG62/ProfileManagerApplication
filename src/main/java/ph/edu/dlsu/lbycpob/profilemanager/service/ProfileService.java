@@ -55,4 +55,16 @@ public class ProfileService {
         return matches.getFirst();
     }
 
+    @Transactional
+    public Profile createProfile(String name) {
+        String trimmed = name == null ? "" : name.trim();
+        if (trimmed.isEmpty()) {
+            throw new IllegalArgumentException("Name field is empty. Please enter a name.");
+        }
+        if (profileRepository.findByNameIgnoreCase(trimmed).isPresent()) {
+            throw new IllegalStateException("A profile named \"" + trimmed + "\" already exists.");
+        }
+        return profileRepository.save(Profile.builder().name(trimmed).build());
+    }
+
 }
