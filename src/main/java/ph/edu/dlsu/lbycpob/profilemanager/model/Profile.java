@@ -50,6 +50,7 @@ public class Profile {
 
     public Profile() {
     }
+
     public Profile(UUID id, String name, String status, String quote, String picture, OffsetDateTime createdAt) {
         this.id = id;
         this.name = name;
@@ -58,41 +59,65 @@ public class Profile {
         this.picture = picture;
         this.createdAt = createdAt;
     }
+
     public UUID getId() {
         return id;
     }
+
     public void setId(UUID id) {
         this.id = id;
     }
+
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
     }
+
     public String getStatus() {
         return status;
     }
+
     public void setStatus(String status) {
         this.status = status;
     }
+
     public String getQuote() {
         return quote;
     }
+
     public void setQuote(String quote) {
         this.quote = quote;
     }
+
     public String getPicture() {
         return picture;
     }
+
     public void setPicture(String picture) {
         this.picture = picture;
     }
+
     public OffsetDateTime getCreatedAt() {
         return createdAt;
     }
+
     public void setCreatedAt(OffsetDateTime createdAt) {
         this.createdAt = createdAt;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Profile profile)) return false;
+        return Objects.equals(id, profile.id)
+                && Objects.equals(name, profile.name)
+                && Objects.equals(status, profile.status)
+                && Objects.equals(quote, profile.quote)
+                && Objects.equals(picture, profile.picture)
+                && Objects.equals(createdAt, profile.createdAt);
     }
 
 }
